@@ -96,6 +96,20 @@ Users can:
 * Organizations are notified when students apply
 * Keeps both sides informed
 
+### 5. Search & Filtering System
+
+#### For Students:
+
+Students can:
+
+Search for internships using keywords (e.g., title, company name, skills)
+
+#### For Organizations:
+
+Organizations can:
+
+Search through their posted internships
+Select a specific internship to view applicants for that specific internship only
 
 
 ## Backend Responsibilities (REST API)
