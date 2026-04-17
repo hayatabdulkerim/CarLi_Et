@@ -35,11 +35,14 @@ The system is designed to work locally, making it lightweight and suitable for c
 
 ## Team Members
 
-* Hayat Abdulkerim — UGR/0826/16
-* Rediet Kifle — UGR/8926/16
-* Hanna Alemyehu — UGR/2795/16
-* Yanet Abrham — UGR/0385/16
-* Kaleab Lemma — UGR/0826/16
+
+| Full Name        | ID Number   |
+| ---------------- | ----------- |
+| Hayat Abdulkerim | UGR/0826/16 |
+| Rediet Kifle     | UGR/8926/16 |
+| Hanna Alemyehu   | UGR/2795/16 |
+| Yanet Abrham     | UGR/0385/16 |
+| Kaleab Lemma     | UGR/0826/16 |
 
 
 
