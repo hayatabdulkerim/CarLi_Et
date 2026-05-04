@@ -1,0 +1,45 @@
+# Misc
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.history
+.svn/
+.swiftpm/
+
+# IDE
+*.iml
+.idea/
+.vscode/
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub/
+.pub-cache/
+build/
+coverage/
+
+# Docs
+**/doc/api/
+
+# Android
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/.last_build_id
+
+# macOS
+macos/Pods/
+
+# Symbols
+app.*.symbols
+app.*.map.json
