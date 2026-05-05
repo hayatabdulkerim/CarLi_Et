@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './features/company/presentation/post_internship_2.dart';
+import './features/company/presentation/company_profile.dart';
 
 void main() {
   runApp(MyApp()); // starts the app
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My First App',
       debugShowCheckedModeBanner: false,
-      home: PostInternship2(),
+      home: CompanyProfile(),
     );
   }
 }

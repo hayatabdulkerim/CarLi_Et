@@ -61,7 +61,7 @@ class CompanyProfile extends StatelessWidget {
                     color: Color(0xFF087E8B),
                   ),
                 ),
-                FilledBtn(text: 'Edit Profile', width: 100, onPressed: () {}),
+                FilledBtn(text: 'Edit Profile', width: 120, onPressed: () {}),
               ],
             ),
 
@@ -91,18 +91,11 @@ class CompanyProfile extends StatelessWidget {
                         color: Colors.grey.shade200,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          'assets/images/logo.png',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
                     ),
                   ],
                 ),
 
-                const SizedBox(width: 25),
+                const SizedBox(width: 5),
 
                 // Company Details
                 const Column(
