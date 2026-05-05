@@ -5,7 +5,6 @@ import '../../../core/widgets/buttons/outlined_btn.dart';
 import '../../../core/widgets/logo/carliet_logo.dart';
 import '../../../core/widgets/text/app_title.dart';
 import '../../../core/widgets/buttons/filled_btn.dart';
-import '../../../core/widgets/text/auth_subtitel.dart';
 import '../../../core/widgets/input/input_field.dart';
 
 class PostInternship2 extends StatelessWidget {
