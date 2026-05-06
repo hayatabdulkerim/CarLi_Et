@@ -19,6 +19,7 @@ class OutlinedBtn extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           foregroundColor: Color(0xFF087E8B),
+          backgroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(
             vertical: 10,
           ), // no horizontal padding needed since we made the width fixed

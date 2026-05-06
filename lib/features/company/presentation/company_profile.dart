@@ -95,9 +95,9 @@ class CompanyProfile extends StatelessWidget {
                   ],
                 ),
 
-                const SizedBox(width: 5),
+                const SizedBox(width: 20),
 
-                // Company Details
+                // Company Detail
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

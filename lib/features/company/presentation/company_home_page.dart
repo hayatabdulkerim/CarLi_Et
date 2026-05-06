@@ -80,7 +80,7 @@ class CompanyHomePage extends StatelessWidget {
                       ),
                       child: ClipOval(
                         child: Image.asset(
-                          'assets/images/logo.png',
+                          'assets/images/ethiotelecom.jpg',
                           fit: BoxFit.contain,
                         ),
                       ),

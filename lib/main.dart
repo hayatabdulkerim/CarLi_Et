@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import './features/company/presentation/company_profile.dart';
+import 'package:carli_et/features/company/presentation/company_profile.dart';
 
 void main() {
-  runApp(MyApp()); // starts the app
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
