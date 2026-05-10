@@ -1,5 +1,5 @@
-import 'package:carli_et/features/Browse/browse_as_guest.dart';
-import 'package:carli_et/features/Browse/browse_internship_detail.dart';
+import 'package:carli_et/features/Browse_as_guest/browse_as_guest.dart';
+import 'package:carli_et/features/Browse_as_guest/browse_internship_detail.dart';
 import 'package:carli_et/features/student/presentation/terms.dart';
 import 'package:go_router/go_router.dart';
 import '../features/company/presentation/company_signup.dart';

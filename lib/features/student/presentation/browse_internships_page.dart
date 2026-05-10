@@ -31,7 +31,7 @@ class BrowseInternshipsPage extends StatelessWidget {
   }
 }
 
-// ─── Header ───────────────────────────────────────────────────────────────────
+//───────────────────────────────────────────────────────────────────
 
 class _BrowseHeader extends StatelessWidget {
   const _BrowseHeader();
@@ -100,8 +100,6 @@ class _BrowseHeader extends StatelessWidget {
           ),
 
           const SizedBox(height: 12),
-
-          // Search + Filter row — fills available width
           Row(
             children: [
               // Search field
@@ -131,8 +129,6 @@ class _BrowseHeader extends StatelessWidget {
               ),
 
               const SizedBox(width: 8),
-
-              // Filter dropdown — fixed, not too wide
               const SizedBox(
                 width: 130,
                 height: 38,
@@ -146,7 +142,7 @@ class _BrowseHeader extends StatelessWidget {
   }
 }
 
-// ─── Body ─────────────────────────────────────────────────────────────────────
+//─────────────────────────────────────────────────────────────────────
 
 class _BrowseBody extends StatelessWidget {
   const _BrowseBody({super.key});
@@ -218,7 +214,6 @@ class _BrowseBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       padding: const EdgeInsets.fromLTRB(12, 16, 12, 100),
-      // ✅ 2-column grid — much more readable on mobile
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 0.82,
@@ -231,7 +226,7 @@ class _BrowseBody extends StatelessWidget {
   }
 }
 
-// ─── Card ─────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────
 
 class _BrowseCard extends StatelessWidget {
   final Map<String, String> data;
@@ -269,7 +264,7 @@ class _BrowseCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
 
-          // Logo + title row
+          // logo + title row
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -302,7 +297,7 @@ class _BrowseCard extends StatelessWidget {
 
           const SizedBox(height: 8),
 
-          // Description
+          // description
           Text(
             data['desc']!,
             maxLines: 2,
@@ -316,14 +311,14 @@ class _BrowseCard extends StatelessWidget {
 
           const SizedBox(height: 8),
 
-          // Location & duration
+          // location & duration
           _CompactDetail(icon: Icons.location_on, text: data['loc']!),
           const SizedBox(height: 4),
           _CompactDetail(icon: Icons.access_time, text: data['dur']!),
 
           const Spacer(),
 
-          // Tags
+          // tags
           Text(
             '${data['tags']} • Apr 8',
             style: const TextStyle(fontSize: 8, color: Colors.black38),
@@ -333,10 +328,10 @@ class _BrowseCard extends StatelessWidget {
 
           const SizedBox(height: 6),
 
-          // Apply button — full width
+          // apply button full width
           SizedBox(
             width: double.infinity,
-            height: 28,
+            height: 24,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -370,7 +365,7 @@ class _BrowseCard extends StatelessWidget {
   }
 }
 
-// ─── Filter Dropdown ──────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────
 
 class _CategoryFilterDropdown extends StatefulWidget {
   const _CategoryFilterDropdown();
@@ -441,7 +436,7 @@ class _CategoryFilterDropdownState extends State<_CategoryFilterDropdown> {
   }
 }
 
-// ─── Compact Detail Row ───────────────────────────────────────────────────────
+//───────────────────────────────────────────────────────
 
 class _CompactDetail extends StatelessWidget {
   final IconData icon;
@@ -466,7 +461,7 @@ class _CompactDetail extends StatelessWidget {
   }
 }
 
-// ─── Bottom Nav Bar ───────────────────────────────────────────────────────────
+// ───────────────────────────────────────────────────────────
 
 class _BottomNavBar extends StatelessWidget {
   const _BottomNavBar();
@@ -491,7 +486,7 @@ class _BottomNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // Active tab indicator
+            // active tab indicator
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
