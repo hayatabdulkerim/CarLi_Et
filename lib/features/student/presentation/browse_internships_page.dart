@@ -31,17 +31,19 @@ class BrowseInternshipsPage extends StatelessWidget {
   }
 }
 
-//Header section
+// ─── Header ───────────────────────────────────────────────────────────────────
+
 class _BrowseHeader extends StatelessWidget {
   const _BrowseHeader();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 20, 25, 20),
+      padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Logo row
           Row(
             children: [
               ColorFiltered(
@@ -49,9 +51,9 @@ class _BrowseHeader extends StatelessWidget {
                   Colors.white,
                   BlendMode.srcIn,
                 ),
-                child: const Logo(height: 60),
+                child: const Logo(height: 44),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -63,7 +65,7 @@ class _BrowseHeader extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white60,
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
                         TextSpan(
@@ -71,7 +73,7 @@ class _BrowseHeader extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
                       ],
@@ -79,54 +81,61 @@ class _BrowseHeader extends StatelessWidget {
                   ),
                   const Text(
                     'Management',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
+                    style: TextStyle(color: Colors.white70, fontSize: 11),
                   ),
                 ],
               ),
             ],
           ),
 
-          const SizedBox(height: 25),
+          const SizedBox(height: 16),
 
           const Text(
             'Browse for Internships',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
 
-          const SizedBox(height: 15),
+          const SizedBox(height: 12),
 
+          // Search + Filter row — fills available width
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 140,
-                height: 35,
-                child: const TextField(
-                  style: TextStyle(color: Colors.white, fontSize: 12),
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    hintStyle: TextStyle(color: Colors.white70),
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.white,
-                      size: 16,
+              // Search field
+              Expanded(
+                child: Container(
+                  height: 38,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const TextField(
+                    style: TextStyle(color: Colors.white, fontSize: 13),
+                    cursorColor: Colors.white,
+                    decoration: InputDecoration(
+                      hintText: 'Search',
+                      hintStyle: TextStyle(color: Colors.white70, fontSize: 13),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.white70,
+                        size: 18,
+                      ),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(vertical: 10),
                     ),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(vertical: 8),
                   ),
                 ),
               ),
 
-              const SizedBox(width: 5),
+              const SizedBox(width: 8),
 
+              // Filter dropdown — fixed, not too wide
               const SizedBox(
-                width: 95,
-                height: 30,
+                width: 130,
+                height: 38,
                 child: _CategoryFilterDropdown(),
               ),
             ],
@@ -137,7 +146,7 @@ class _BrowseHeader extends StatelessWidget {
   }
 }
 
-// Body section
+// ─── Body ─────────────────────────────────────────────────────────────────────
 
 class _BrowseBody extends StatelessWidget {
   const _BrowseBody({super.key});
@@ -149,7 +158,7 @@ class _BrowseBody extends StatelessWidget {
       'title': 'Summer Intern',
       'desc': "Join Ethiopia's first bank...",
       'loc': 'Addis Ababa',
-      'dur': '8-12 wks',
+      'dur': '8–12 wks',
       'sal': 'N/A',
       'tags': '#Finance #Banking',
     },
@@ -208,20 +217,22 @@ class _BrowseBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.fromLTRB(10, 20, 10, 100),
+      padding: const EdgeInsets.fromLTRB(12, 16, 12, 100),
+      // ✅ 2-column grid — much more readable on mobile
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        childAspectRatio: 0.9,
-        crossAxisSpacing: 8,
+        crossAxisCount: 2,
+        childAspectRatio: 0.82,
+        crossAxisSpacing: 10,
         mainAxisSpacing: 12,
       ),
-      itemCount: 6,
+      itemCount: internshipData.length,
       itemBuilder: (context, index) => _BrowseCard(data: internshipData[index]),
     );
   }
 }
 
-//Internship card
+// ─── Card ─────────────────────────────────────────────────────────────────────
+
 class _BrowseCard extends StatelessWidget {
   final Map<String, String> data;
   const _BrowseCard({required this.data});
@@ -229,106 +240,129 @@ class _BrowseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(6),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(14),
         border: Border.all(color: Colors.grey.shade200),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Company name
           Text(
             data['company']!,
             maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              color: Colors.black26,
+              color: Colors.black38,
               fontSize: 10,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
+
+          // Logo + title row
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 34,
-                height: 34,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: Image.asset(
-                    data['image']!,
-                    fit: BoxFit.contain,
-                    errorBuilder: (c, e, s) => const Icon(
-                      Icons.business,
-                      size: 34,
-                      color: Colors.grey,
-                    ),
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: Image.asset(
+                  data['image']!,
+                  width: 38,
+                  height: 38,
+                  fit: BoxFit.contain,
+                  errorBuilder: (c, e, s) =>
+                      const Icon(Icons.business, size: 38, color: Colors.grey),
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      data['title']!,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      maxLines: 1,
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      data['desc']!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 9, color: Colors.grey),
-                    ),
-                    const SizedBox(height: 10),
-                    _CompactDetail(icon: Icons.location_on, text: data['loc']!),
-                    const SizedBox(height: 5),
-                    _CompactDetail(icon: Icons.access_time, text: data['dur']!),
-                  ],
+                child: Text(
+                  data['title']!,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    height: 1.2,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 9),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: SizedBox(
-              width: 50,
-              height: 20,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => InternshipDetailsPage(data: data),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF087E8B),
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+
+          const SizedBox(height: 8),
+
+          // Description
+          Text(
+            data['desc']!,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 10,
+              color: Colors.grey,
+              height: 1.4,
+            ),
+          ),
+
+          const SizedBox(height: 8),
+
+          // Location & duration
+          _CompactDetail(icon: Icons.location_on, text: data['loc']!),
+          const SizedBox(height: 4),
+          _CompactDetail(icon: Icons.access_time, text: data['dur']!),
+
+          const Spacer(),
+
+          // Tags
+          Text(
+            '${data['tags']} • Apr 8',
+            style: const TextStyle(fontSize: 8, color: Colors.black38),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+
+          const SizedBox(height: 6),
+
+          // Apply button — full width
+          SizedBox(
+            width: double.infinity,
+            height: 28,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => InternshipDetailsPage(data: data),
                   ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF087E8B),
+                padding: EdgeInsets.zero,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Text(
-                  "Apply now",
-                  style: TextStyle(fontSize: 8, color: Colors.white),
+                elevation: 0,
+              ),
+              child: const Text(
+                'Apply Now',
+                style: TextStyle(
+                  fontSize: 11,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 9),
-          Text(
-            '${data['tags']} • Posted Apr 8',
-            style: const TextStyle(fontSize: 6, color: Colors.black38),
           ),
         ],
       ),
@@ -336,7 +370,7 @@ class _BrowseCard extends StatelessWidget {
   }
 }
 
-// Filter catagory dropdown
+// ─── Filter Dropdown ──────────────────────────────────────────────────────────
 
 class _CategoryFilterDropdown extends StatefulWidget {
   const _CategoryFilterDropdown();
@@ -347,23 +381,21 @@ class _CategoryFilterDropdown extends StatefulWidget {
 }
 
 class _CategoryFilterDropdownState extends State<_CategoryFilterDropdown> {
-  String selectedFilter = '  Filter by Category';
+  String selectedFilter = 'Category';
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      padding: const EdgeInsets.symmetric(horizontal: 0),
+      height: 38,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: PopupMenuButton<String>(
-        offset: const Offset(0, 45),
+        offset: const Offset(0, 42),
         onSelected: (String value) {
-          setState(() {
-            selectedFilter = value;
-          });
+          setState(() => selectedFilter = value);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -372,35 +404,35 @@ class _CategoryFilterDropdownState extends State<_CategoryFilterDropdown> {
               child: Text(
                 selectedFilter,
                 style: const TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF011627),
-                  overflow: TextOverflow.ellipsis,
                 ),
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             const Icon(
               Icons.keyboard_arrow_down,
-              size: 18,
+              size: 16,
               color: Color(0xFF011627),
             ),
           ],
         ),
         itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
           const PopupMenuItem<String>(
-            value: '  Filter by Name',
+            value: 'Name',
             child: Text('Filter by Name'),
           ),
           const PopupMenuItem<String>(
-            value: '  Filter by Date',
+            value: 'Date',
             child: Text('Filter by Date'),
           ),
           const PopupMenuItem<String>(
-            value: '  Filter by Type',
-            child: Text('Filter by Internship Type'),
+            value: 'Type',
+            child: Text('Filter by Type'),
           ),
           const PopupMenuItem<String>(
-            value: '  Filter by Location',
+            value: 'Location',
             child: Text('Filter by Location'),
           ),
         ],
@@ -409,77 +441,84 @@ class _CategoryFilterDropdownState extends State<_CategoryFilterDropdown> {
   }
 }
 
+// ─── Compact Detail Row ───────────────────────────────────────────────────────
+
 class _CompactDetail extends StatelessWidget {
   final IconData icon;
   final String text;
   const _CompactDetail({required this.icon, required this.text});
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, size: 10, color: Colors.redAccent),
+        Icon(icon, size: 11, color: Colors.redAccent),
         const SizedBox(width: 3),
-        Text(text, style: const TextStyle(fontSize: 7)),
+        Flexible(
+          child: Text(
+            text,
+            style: const TextStyle(fontSize: 10, color: Colors.black54),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }
 }
 
-// Bottom navigation bar
+// ─── Bottom Nav Bar ───────────────────────────────────────────────────────────
+
 class _BottomNavBar extends StatelessWidget {
   const _BottomNavBar();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 0, 25, 30),
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
       child: Container(
-        height: 70,
+        height: 64,
         decoration: BoxDecoration(
           color: const Color(0xFF087E8B),
-          borderRadius: BorderRadius.circular(35),
+          borderRadius: BorderRadius.circular(32),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: 15,
-              offset: const Offset(0, 8),
+              color: Colors.black.withOpacity(0.18),
+              blurRadius: 14,
+              offset: const Offset(0, 6),
             ),
           ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            // Active tab indicator
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.transparent,
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: 2),
               ),
               child: const Icon(
                 Icons.grid_view_rounded,
                 color: Colors.white,
-                size: 26,
+                size: 24,
               ),
             ),
             IconButton(
               icon: const Icon(
                 Icons.home_outlined,
                 color: Colors.white,
-                size: 30,
+                size: 28,
               ),
-              onPressed: () {
-                context.pushNamed('student_home');
-              },
+              onPressed: () => context.pushNamed('student_home'),
             ),
             IconButton(
               icon: const Icon(
                 Icons.people_alt_rounded,
                 color: Colors.white,
-                size: 30,
+                size: 28,
               ),
-              onPressed: () {
-                context.pushNamed('profile');
-              },
+              onPressed: () => context.pushNamed('profile'),
             ),
           ],
         ),
