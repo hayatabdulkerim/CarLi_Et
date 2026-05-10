@@ -85,9 +85,7 @@ class _BrowseHeader extends StatelessWidget {
               ),
             ],
           ),
-
           const SizedBox(height: 25),
-
           const Text(
             'Browse for Internships',
             style: TextStyle(
@@ -96,15 +94,17 @@ class _BrowseHeader extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-
           const SizedBox(height: 15),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 140,
-                height: 35,
+              Container(
+                width: 160,
+                height: 38,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: const TextField(
                   style: TextStyle(color: Colors.white, fontSize: 12),
                   cursorColor: Colors.white,
@@ -117,17 +117,29 @@ class _BrowseHeader extends StatelessWidget {
                       size: 16,
                     ),
                     border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(vertical: 8),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10),
                   ),
                 ),
               ),
-
-              const SizedBox(width: 5),
-
-              const SizedBox(
-                width: 95,
-                height: 30,
-                child: _CategoryFilterDropdown(),
+              const SizedBox(width: 12),
+              Container(
+                width: 180,
+                height: 38,
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 4,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: const Center(
+                  child: _CategoryFilterDropdown(),
+                ),
               ),
             ],
           ),
@@ -136,7 +148,6 @@ class _BrowseHeader extends StatelessWidget {
     );
   }
 }
-
 // Body section
 
 class _BrowseBody extends StatelessWidget {
@@ -211,9 +222,9 @@ class _BrowseBody extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(10, 20, 10, 100),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        childAspectRatio: 0.9,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 12,
+        childAspectRatio: 1.5,
+        crossAxisSpacing: 25,
+        mainAxisSpacing: 25,
       ),
       itemCount: 6,
       itemBuilder: (context, index) => _BrowseCard(data: internshipData[index]),
@@ -229,18 +240,24 @@ class _BrowseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(6),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.grey.shade200),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             data['company']!,
-            maxLines: 1,
             style: const TextStyle(
               color: Colors.black26,
               fontSize: 10,
@@ -252,22 +269,22 @@ class _BrowseCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: 34,
-                height: 34,
+                width: 40,
+                height: 40,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(6),
                   child: Image.asset(
                     data['image']!,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                     errorBuilder: (c, e, s) => const Icon(
                       Icons.business,
-                      size: 34,
+                      size: 40,
                       color: Colors.grey,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -275,63 +292,110 @@ class _BrowseCard extends StatelessWidget {
                     Text(
                       data['title']!,
                       style: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                       maxLines: 1,
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 4),
                     Text(
                       data['desc']!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 9, color: Colors.grey),
+                      style: const TextStyle(fontSize: 10, color: Colors.grey),
                     ),
-                    const SizedBox(height: 10),
-                    _CompactDetail(icon: Icons.location_on, text: data['loc']!),
-                    const SizedBox(height: 5),
-                    _CompactDetail(icon: Icons.access_time, text: data['dur']!),
+                    const SizedBox(height: 12),
+                    _CompactDetail(
+                      icon: Icons.location_on, 
+                      text: data['loc']!,
+                      iconColor: Colors.redAccent,
+                    ),
+                    const SizedBox(height: 4),
+                    _CompactDetail(
+                      icon: Icons.access_time, 
+                      text: data['dur']!,
+                      iconColor: Colors.orange,
+                    ),
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 9),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: SizedBox(
-              width: 50,
-              height: 20,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => InternshipDetailsPage(data: data),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${data['tags']}',
+                    style: const TextStyle(fontSize: 8, color: Colors.black38),
+                  ),
+                  const SizedBox(height: 2),
+                  const Text(
+                    'Posted Apr 8',
+                    style: TextStyle(fontSize: 8, color: Colors.black38),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 28,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => InternshipDetailsPage(data: data),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF087E8B),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
                     ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF087E8B),
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Text(
+                    "Apply now",
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
                   ),
                 ),
-                child: const Text(
-                  "Apply now",
-                  style: TextStyle(fontSize: 8, color: Colors.white),
-                ),
               ),
-            ),
-          ),
-          const SizedBox(height: 9),
-          Text(
-            '${data['tags']} • Posted Apr 8',
-            style: const TextStyle(fontSize: 6, color: Colors.black38),
+            ],
           ),
         ],
       ),
+    );
+  }
+}
+
+class _CompactDetail extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final Color iconColor;
+
+  const _CompactDetail({
+    required this.icon, 
+    required this.text,
+    required this.iconColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(icon, size: 12, color: iconColor),
+        const SizedBox(width: 4),
+        Text(
+          text, 
+          style: const TextStyle(fontSize: 10, color: Colors.black54),
+        ),
+      ],
     );
   }
 }
@@ -409,21 +473,6 @@ class _CategoryFilterDropdownState extends State<_CategoryFilterDropdown> {
   }
 }
 
-class _CompactDetail extends StatelessWidget {
-  final IconData icon;
-  final String text;
-  const _CompactDetail({required this.icon, required this.text});
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, size: 10, color: Colors.redAccent),
-        const SizedBox(width: 3),
-        Text(text, style: const TextStyle(fontSize: 7)),
-      ],
-    );
-  }
-}
 
 // Bottom navigation bar
 class _BottomNavBar extends StatelessWidget {
