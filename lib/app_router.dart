@@ -19,6 +19,7 @@ import './features/student/presentation/browse_internships_page.dart';
 import './features/student/presentation/auth_complete_profile_one.dart';
 import './features/student/presentation/auth_complete_profile_two.dart';
 import './features/student/presentation/auth_complete_profile_three.dart';
+import './features/Browse/browse_as_guest.dart';
 
 
 final GoRouter appRouter = GoRouter(
@@ -128,6 +129,11 @@ final GoRouter appRouter = GoRouter(
       path: '/complete_profile_three',
       name: 'complete_profile_three',
       builder: (context, state) => const AuthCompleteProfileThree(),
+    ),
+    GoRoute( 
+      path: '/browse_as_guest',
+      name: 'browse_as_guest',
+      builder: (context, state) => const BrowseAsGuest (),
     ),
   ],
 );

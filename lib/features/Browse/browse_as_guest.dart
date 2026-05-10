@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BrowseAsGuest extends StatelessWidget {
   const BrowseAsGuest({super.key});
@@ -10,7 +11,6 @@ class BrowseAsGuest extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // TOP SECTION
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
@@ -24,9 +24,7 @@ class BrowseAsGuest extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-
                   const SizedBox(height: 35),
-
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -41,46 +39,49 @@ class BrowseAsGuest extends StatelessWidget {
                           ),
                         ),
                       ),
-
                       Column(
                         children: [
-                          Container(
-                            width: 150,
-                            height: 52,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF005C5B),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Get started\nas student',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
+                          GestureDetector(
+                            onTap: () => context.pushNamed('student_signin'),
+                            child: Container(
+                              width: 150,
+                              height: 52,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF005C5B),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'Get started\nas student',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-
                           const SizedBox(height: 15),
-
-                          Container(
-                            width: 150,
-                            height: 52,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Get started\nas Company',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF0A8785),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
+                          GestureDetector(
+                            onTap: () => context.pushNamed('company_signin'),
+                            child: Container(
+                              width: 150,
+                              height: 52,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'Get started\nas Company',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xFF0A8785),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
@@ -92,8 +93,6 @@ class BrowseAsGuest extends StatelessWidget {
                 ],
               ),
             ),
-
-            // WHITE CONTAINER
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -113,18 +112,16 @@ class BrowseAsGuest extends StatelessWidget {
                           itemCount: 6,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                crossAxisSpacing: 12,
-                                mainAxisSpacing: 18,
-                                childAspectRatio: 0.45,
-                              ),
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 18,
+                            childAspectRatio: 0.45,
+                          ),
                           itemBuilder: (context, index) {
                             return const InstitutionCard();
                           },
                         ),
                       ),
-
-                      // BOTTOM NAV
                       Container(
                         height: 70,
                         decoration: BoxDecoration(
@@ -181,23 +178,17 @@ class InstitutionCard extends StatelessWidget {
             ),
           ),
         ),
-
         const SizedBox(height: 8),
-
         const Text(
           'Institution Name',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
         ),
-
         const SizedBox(height: 4),
-
         const Text(
           'Institution Brief\nDescription',
           style: TextStyle(color: Colors.grey, fontSize: 11, height: 1.2),
         ),
-
         const SizedBox(height: 6),
-
         const Text(
           'Read more...',
           style: TextStyle(color: Colors.grey, fontSize: 10),

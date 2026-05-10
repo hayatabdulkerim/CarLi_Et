@@ -13,8 +13,8 @@ class Home extends StatelessWidget {
     context.pushNamed('company_signin');
   }
 
-  void _onGuestPressed() {
-    print("Browse as Guest");
+  void _onGuestPressed(BuildContext context) {
+    context.pushNamed('browse_as_guest');
   }
 
   @override
@@ -45,11 +45,13 @@ class Home extends StatelessWidget {
                 AuthButtons(
                   onStudentPressed: () => _onStudentPressed(context),
                   onCompanyPressed: () => _onCompanyPressed(context),
+      
                 ),
 
                 const SizedBox(height: 30),
+                
+                GuestLink(onTap: () => _onGuestPressed(context)),
 
-                GuestLink(onTap: _onGuestPressed),
               ],
             ),
           ),

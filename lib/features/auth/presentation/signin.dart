@@ -17,7 +17,7 @@ class Signin extends StatelessWidget {
 
   void _onLoginPressed(BuildContext context) {
     if (role == 'student') {
-      context.goNamed('home'); // change to student home when ready
+      context.goNamed('student_home'); // change to student home when ready
     } else {
       context.goNamed('company_home');
     }
