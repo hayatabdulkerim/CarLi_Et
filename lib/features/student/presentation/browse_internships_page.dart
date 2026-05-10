@@ -153,7 +153,7 @@ class _BrowseHeader extends StatelessWidget {
 //─────────────────────────────────────────────────────────────────────
 
 class _BrowseBody extends StatelessWidget {
-  const _BrowseBody({super.key});
+  const _BrowseBody();
 
   final List<Map<String, String>> internshipData = const [
     {
