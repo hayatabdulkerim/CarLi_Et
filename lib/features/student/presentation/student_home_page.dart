@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/widgets/logo/carliet_logo.dart';
 import '../../../features/student/presentation/internship_details_page.dart';
+
 
 class StudentHomePage extends StatelessWidget {
   const StudentHomePage({super.key});
@@ -133,21 +135,24 @@ class _HeaderSection extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {context.goNamed('browse_internships');},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF08363B),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16),
                           ),
+                          
                           padding: const EdgeInsets.symmetric(
                             horizontal: 25,
                             vertical: 12,
                           ),
                         ),
+                          
                         child: const Text(
                           'Browse Internships',
                           style: TextStyle(color: Colors.white),
                         ),
+                      
                       ),
                     ],
                   ),
@@ -414,22 +419,23 @@ class _InstitutionCard extends StatelessWidget {
   }
 }
 // Bottom navigation bar
+
 class _BottomNavBar extends StatelessWidget {
   const _BottomNavBar();
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Padding( 
       padding: const EdgeInsets.fromLTRB(25, 0, 25, 30),
       child: Container(
         height: 70,
         decoration: BoxDecoration(
-          color: const Color(0xFF087E8B), 
-          borderRadius: BorderRadius.circular(35), 
+          color: const Color(0xFF087E8B),
+          borderRadius: BorderRadius.circular(35),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2), 
-              blurRadius: 15, 
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 15,
               offset: const Offset(0, 8),
             )
           ],
@@ -440,44 +446,49 @@ class _BottomNavBar extends StatelessWidget {
             
             IconButton(
               icon: const Icon(
-                Icons.grid_view_rounded, 
-                color: Colors.white, 
+                Icons.grid_view_rounded,
+                color: Colors.white,
                 size: 26,
-              ), 
+              ),
               onPressed: () {
-               
+                context.goNamed('browse_internships');
               },
             ),
 
             
-            Container(
-              padding: const EdgeInsets.all(12), 
-              decoration: const BoxDecoration(
-                color: Colors.white, 
-                shape: BoxShape.circle,
-              ), 
-              child: const Icon(
-                Icons.home_rounded, 
-                color: Color(0xFF087E8B), 
-                size: 26,
+            IconButton(
+              onPressed: () {
+                context.goNamed('student_home');
+              },
+              icon: Container(
+                padding: const EdgeInsets.all(8), 
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.home_rounded,
+                  color: Color(0xFF087E8B),
+                  size: 26,
+                ),
               ),
             ),
 
             
             IconButton(
-              icon: const Icon(
-                Icons.groups_2_outlined, 
-                color: Colors.white, 
-                size: 30,
-              ), 
               onPressed: () {
-                
+                context.goNamed('profile');
               },
+              icon: const Icon(
+                Icons.groups_2_outlined,
+                color: Colors.white,
+                size: 30,
+              ),
             ),
           ],
         ),
       ),
-    );
+    ); 
   }
 }
 
